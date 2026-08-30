@@ -1,0 +1,45 @@
+# ┌───── Version Info 2026-05-01 ─────────────
+# │ Name                         : renm
+# │ Frame work                   : PySide6
+# │ VSVersionInfo filevers       : 2.0.0.2
+# │               prodvers       : 2.0.0.2
+# │ StringTable   FileVersion    : 2.0.0.2
+# │               ProductVersion : 2.0.0+2
+# └───────────────────────────────────────────
+VSVersionInfo(
+  ffi=FixedFileInfo(
+# Windowsが内部的に扱う数値版
+    filevers=(2,0,0,2),
+    prodvers=(2,0,0,2),
+    mask=0x3f,
+    flags=0x0,
+    OS=0x40004,
+    fileType=0x1,
+    subtype=0x0,
+    date=(0, 0)
+    ),
+    kids=[
+        StringFileInfo(
+          [
+            StringTable(
+              u'040904B0',
+              [
+                StringStruct(u'CompanyName', u'a_haze'),
+                StringStruct(u'FileDescription', u'アプリケーション'),
+                StringStruct(u'FileVersion', u'2.0.0.2'),
+                StringStruct(u'InternalName', u'renm'),
+                StringStruct(u'LegalCopyright', u''),
+                StringStruct(u'OriginalFilename', u'renm_ps6.py'),
+                StringStruct(u'ProductName', u'renm_ps6'),
+                StringStruct(u'ProductVersion', u'2.0.0+2')
+              ]
+            )
+          ]
+        ),
+        VarFileInfo(
+          [
+            VarStruct(u'Translation', [0, 1200, 1041, 1200])
+          ]
+        )
+    ]
+)

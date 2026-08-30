@@ -1,0 +1,12 @@
+Version: 2.0.0.0
+CompanyName: a_haze
+FileDescription: アプリケーション
+InternalName: renm_ps6.exe
+LegalCopyright:
+OriginalFilename: renm_ps6.py
+ProductName: renm_ps6
+Translation:
+  - langID: 0
+    charsetID: 1200
+  - langID: 1041
+    charsetID: 1200
