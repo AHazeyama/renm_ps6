@@ -3,6 +3,10 @@
   <img src="./assets/Title_light.png#gh-light-mode-only" alt="renm banner light">
 </p>
 
+<!-- 
+<img src="./assets/Title_light.png">
+-->
+
 # batch renaming tool for files and directories [renm_ps6]
 <p align="left">
   <img src="./assets/renm_ps6.png" width="720">
@@ -38,6 +42,21 @@
 - 自動で生成されたファイル名(日付+追番等)の一括リネーム
 - Prefix、Suffix等の文字列の付加
 - ファイル名中の不要文字列の削除
+> [!IMPORTANT]
+> Case-only rename  
+> Windowsでは通常、ファイル名の大文字・小文字を区別しないため、`Env` → `env` のような大文字・小文字だけのリネームが正常に反映されない場合があります。  
+> 一方、GitHub/Linux環境では大文字・小文字が区別されるため、ローカルでは正常でもリンク切れ等の原因になる場合があります。  
+> **renm** を使用すると、`Env` → `env` のような一括置換も簡単に行えます。
+>
+> 実例：  
+> M_CMD_get-childitem-Env.png  
+> 　　　　　↓  
+> M_CMD_get-childitem-env.png  
+>
+> ️<img src="./assets/env/M_caution.png" height="14"> WindowsのGit管理下では、大文字・小文字だけの変更を正しく認識しない場合があります。  
+> その場合は、一度別名を経由してリネームする等の対応が必要です。
+
+
 
 ## Caution
 　本ツールはファイル / ディレクトリ構成を変更します。  
@@ -83,17 +102,7 @@
 - デスクトップユーティリティに適した構成
 
 ## Build (for developers) 
-　![](assets/env/M_SHELL_BASH-PWSH.png)  
-```pwsh 
-pyinstaller `  
-  --noconsole `  
-  --onefile `  
-  --icon=renm_ps6.ico `  
-  --add-data "renm_ps6.ico;." `  
-  --version-file=renm_ps6.version `  
-  --collect-all PySide6 `  
-  renm_ps6.py  
-```  
+　[<img src="./assets/env/M_link.png" height="14"> 単体起動アプリケーション(.exe)の生成](https://github.com/AHazeyama/public/blob/main/CommonSettings.md)  
 
 ## Documentation  
 Doxygen により生成できます。  
@@ -102,10 +111,9 @@ Doxygen により生成できます。
 　```  
 doxygen Doxyfile  
 　```  
+
 　生成後、以下のファイルをブラウザで開くことでドキュメントを確認できます。  
-　```  
-🗁 docs/html/index.html
-　```
+　<img src="./assets/env/M_folder.png" height="14"> docs/html/index.html
 
 ## Download
 　🔗 https://github.com/AHazeyama/public/releases/latest  
