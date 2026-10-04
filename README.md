@@ -46,7 +46,8 @@
 > Case-only rename  
 > Windowsでは通常、ファイル名の大文字・小文字を区別しないため、`Env` → `env` のような大文字・小文字だけの違いがファイルエクスプローラーでは判別できない場合があります。  
 > 更にファイルエクスプローラーでのリネームは正常に反映されない場合があります。<img src="./assets/env/Jonesy29_i-dont-get-it.png" height="128" align="top">  
-> 一方、GitHub/Linux環境では大文字・小文字が正確に区別されるため、ローカルでは正常でもリンク切れ等の原因になります。<img src="./assets/env/Jonesy23_its-reality.png" height="128" align="top">  
+> 一方、GitHub/Linux環境では大文字・小文字が正確に区別されるため、ローカルでは正常でもリンク切れ等の原因になります。  
+> <img src="./assets/env/Jonesy23_its-reality.png" height="128" align="top">  
 > **renm** を使用すると、`Env` → `env` のような一括置換も簡単に行えます。
 >
 > 実例：  
