@@ -81,7 +81,7 @@
 ### Buttons
 >| Item | Description |
 >| :--| :--|
->| Move  | 変換実行       |
+>| Rename | 変換実行       |
 >| Clear | 入力クリア     |
 >| Undo  | 変更の取り消し  |
 >| Help  | ヘルプ表示     |
