@@ -79,7 +79,7 @@ class RenmWindow(QMainWindow):
         row1.addWidget(self.exec_dir_entry, 1)
 
         self.select_button = self._make_button("Select")
-        self.select_button.setObjectName("subButton")
+        self.select_button.setObjectName("selectButton")
         self.select_button.clicked.connect(self.select_click)
         row1.addWidget(self.select_button)
 
@@ -158,7 +158,7 @@ class RenmWindow(QMainWindow):
         row5.addWidget(self.clear_button)
 
         self.help_button = self._make_button("Help")
-        self.help_button.setObjectName("subButton")
+        self.help_button.setObjectName("helpButton")
         self.help_button.clicked.connect(self.help_click)
         row5.addWidget(self.help_button)
 
@@ -213,6 +213,16 @@ class RenmWindow(QMainWindow):
                     stop:1 #00A6D6
                 );
             }
+            /* Select（紫） */
+            QPushButton#selectButton {
+                color: white;
+                background: qlineargradient(
+                    x1:0, y1:0, x2:0, y2:1,
+                    stop:0 #E6D5FF,
+                    stop:1 #6600FF
+                );
+            }
+            
             
             /* Execute（Rename / Delete）（赤） */
             QPushButton#executeButton {
@@ -224,9 +234,20 @@ class RenmWindow(QMainWindow):
                 );
             }
             
+            /* Help（緑） */
+            QPushButton#helpButton {
+                color: white;
+                background: qlineargradient(
+                    x1:0, y1:0, x2:0, y2:1,
+                    stop:0 #CCFFCC,
+                    stop:1 #009944
+                );
+            }
+            
+            /* Exit（黒） */
             /* Undo（黄色） */
             QPushButton#undoButton {
-                color: #222;
+                color: white;
                 background: qlineargradient(
                     x1:0, y1:0, x2:0, y2:1,
                     stop:0 #FFFFCC,
@@ -246,7 +267,7 @@ class RenmWindow(QMainWindow):
             
             /* その他（灰色） */
             QPushButton#subButton {
-                color: #222;
+                color: white;
                 background: qlineargradient(
                     x1:0, y1:0, x2:0, y2:1,
                     stop:0 #CCCCCC,
@@ -314,24 +335,76 @@ class RenmWindow(QMainWindow):
         for line in lines:
             self.append_message(line + "\n")
 
+
     def scan_click(self) -> None:
         self.clear_message()
-        selected_dir = self.exec_dir_entry.text().strip()
     
-        if not selected_dir:
-            self.append_message("'Exec directory' を指定して下さい。\n")
+        dir_wd = self.exec_dir_entry.text().strip()
+        bfr_wd = self.before_wd_entry.text()
+        aft_wd = self.after_wd_entry.text()
+    
+        errors = []
+        if not dir_wd:
+            errors.append("'Exec directory' を指定して下さい。")
+        if not bfr_wd:
+            errors.append("'Before word' を指定して下さい。")
+        if aft_wd == "":
+            errors.append("'After word' を指定して下さい。")
+    
+        if errors:
+            self.show_error_lines(errors)
             return
     
-        if not os.path.isdir(selected_dir):
-            self.append_message("指定されたディレクトリが存在しません。\n")
+        if not os.path.isdir(dir_wd):
+            self.show_error_lines(["指定されたディレクトリが存在しません。"])
             return
     
         try:
-            entries = sorted(os.listdir(selected_dir))
-            for name in entries:
-                self.append_message(name + "\n")
+            self.scan_directory(Path(dir_wd), bfr_wd, aft_wd, "")
+        except re.error as exc:
+            self.append_message(f"正規表現エラー: {exc}\n")
         except Exception as exc:
-            self.append_message(f"フォルダ内容の取得に失敗しました: {exc}\n")
+            self.append_message(f"スキャン中にエラーが発生しました: {exc}\n")
+
+    def scan_directory(
+        self,
+        dir_path: Path,
+        before_word: str,
+        after_word: str,
+        indent: str
+    ) -> None:
+        next_indent = indent + "    "
+    
+        self.append_message(f"{indent} => {dir_path}\n\n")
+    
+        items = [p for p in dir_path.iterdir() if not p.name.startswith(".")]
+        items.sort(key=lambda p: p.name)
+    
+        for item in items:
+            # ディレクトリは再帰指定時のみ内部をスキャン
+            if item.is_dir() and self.rec_chk.isChecked():
+                self.scan_directory(
+                    item,
+                    before_word,
+                    after_word,
+                    next_indent
+                )
+    
+            stem, suffix = os.path.splitext(item.name)
+    
+            if suffix:
+                new_name = re.sub(before_word, after_word, stem) + suffix
+            else:
+                new_name = re.sub(before_word, after_word, item.name)
+    
+            new_path = item.with_name(new_name)
+    
+            # 変更対象のみ表示
+            if item != new_path:
+                self.append_message(f"{next_indent}   {item}\n")
+                self.append_message(f"{next_indent}-> {new_path}\n\n")
+    
+        self.append_message(f"{indent} <= {dir_path}\n")
 
     def select_click(self) -> None:
         ini_dir = str(Path.home())

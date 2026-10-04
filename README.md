@@ -44,8 +44,9 @@
 - ファイル名中の不要文字列の削除
 > [!IMPORTANT]
 > Case-only rename  
-> Windowsでは通常、ファイル名の大文字・小文字を区別しないため、`Env` → `env` のような大文字・小文字だけのリネームが正常に反映されない場合があります。  
-> 一方、GitHub/Linux環境では大文字・小文字が区別されるため、ローカルでは正常でもリンク切れ等の原因になる場合があります。  
+> Windowsでは通常、ファイル名の大文字・小文字を区別しないため、`Env` → `env` のような大文字・小文字だけの違いがファイルエクスプローラーでは判別できない場合があります。
+> 更にファイルエクスプローラーでのリネームは正常に反映されない場合があります。<img src="./assets/env/Jonesy29_i-dont-get-it.png" height="128">  
+> 一方、GitHub/Linux環境では大文字・小文字が正確に区別されるため、ローカルでは正常でもリンク切れ等の原因になります。<img src="./assets/env/Jonesy23_its-reality.png" height="128">
 > **renm** を使用すると、`Env` → `env` のような一括置換も簡単に行えます。
 >
 > 実例：  
@@ -102,7 +103,7 @@
 - デスクトップユーティリティに適した構成
 
 ## Build (for developers) 
-　[<img src="./assets/env/M_link.png" height="14"> 単体起動アプリケーション(.exe)の生成](https://github.com/AHazeyama/public/blob/main/CommonSettings.md)  
+　[<img src="./assets/env/M_link.png" height="14"> 単体起動アプリケーション(.exe)の生成](https://github.com/AHazeyama/SoftwareDevelopmentGuide/blob/main/templates/renm_ps6_Vim.md)  
 
 ## Documentation  
 Doxygen により生成できます。  
