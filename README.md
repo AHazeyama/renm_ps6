@@ -107,21 +107,11 @@
 ## Build (Standalone application)  
 　[<img src="./assets/env/M_link.png" height="14"> 単体起動アプリケーション ( **.exe** ) 生成手順](https://github.com/AHazeyama/SoftwareDevelopmentGuide/blob/main/templates/renm_ps6_Vim.md)  
 
-## Documentation  
-Doxygen により生成できます。  
-　⇒ ソースコードの可読性向上と構造理解を目的としています。  
-　![](./assets/env/M_SHELL_BASH-PWSH.png)  
-　```  
-doxygen Doxyfile  
-　```  
-
-　生成後、以下のファイルをブラウザで開くことでドキュメントを確認できます。  
-　<img src="./assets/env/M_folder.png" height="14"> docs/html/index.html
-
 ## Download
-　🔗 https://github.com/AHazeyama/public/releases/latest  
+　[<img src="./assets/env/M_link.png" height="14"> Download Repository (GitHub)](https://github.com/AHazeyama/public/releases/latest)
+
 > [!NOTE]  
-　各ツールの軽量版として Tkinter 実装も公開しています。
+>　各ツールの軽量版として Tkinter 実装も公開しています。
 
 ## License
 　TBD
