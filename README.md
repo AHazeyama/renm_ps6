@@ -90,6 +90,7 @@
 ## Tech Stack
 * Python 3.x
 * PySide6
+* Pyinstaller  
 
 ## Design / Implementation Points
 - 一括リネーム、文字列追加/削除に特化
@@ -103,8 +104,8 @@
 - 状態表示やメッセージ表示を組み込みやすい
 - デスクトップユーティリティに適した構成
 
-## Build (for developers) 
-　[<img src="./assets/env/M_link.png" height="14"> 単体起動アプリケーション(.exe)の生成](https://github.com/AHazeyama/SoftwareDevelopmentGuide/blob/main/templates/renm_ps6_Vim.md)  
+## Build (Standalone application)  
+　[<img src="./assets/env/M_link.png" height="14"> 単体起動アプリケーション ( **.exe** ) 生成手順](https://github.com/AHazeyama/SoftwareDevelopmentGuide/blob/main/templates/renm_ps6_Vim.md)  
 
 ## Documentation  
 Doxygen により生成できます。  
